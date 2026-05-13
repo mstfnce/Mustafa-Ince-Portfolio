@@ -25,8 +25,8 @@
         <a href="#projects" class="nav-item" data-index="03">Projeler</a>
         <a href="#contact" class="nav-item" data-index="04">İletişim</a>
       </nav>
-      <a href="#" class="resume-btn">
-        <span>CV İndir</span>
+      <a href="assets/cv/mustafa-ince-cv.html" class="resume-btn" target="_blank" rel="noopener">
+        <span>CV Görüntüle</span>
         <span class="btn-arrow">↗</span>
       </a>
     </header>

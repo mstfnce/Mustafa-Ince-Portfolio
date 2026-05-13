@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mustafa Ince CV</title>
+    <style>
+      :root {
+        --blue: #2f65b9;
+        --ink: #111111;
+        --muted: #333333;
+        --paper: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        background: #eeeeee;
+        color: var(--ink);
+        font-family: "Times New Roman", Times, serif;
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      main {
+        width: min(900px, calc(100% - 32px));
+        margin: 28px auto;
+        background: var(--paper);
+        padding: 30px 58px 48px;
+      }
+
+      header {
+        align-items: end;
+        border-bottom: 3px solid var(--blue);
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 24px;
+        padding-bottom: 8px;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        color: #06366f;
+        font-size: 48px;
+        font-weight: 400;
+        line-height: 1;
+      }
+
+      .title {
+        color: #06366f;
+        font-size: 22px;
+        margin-bottom: 4px;
+      }
+
+      .contact {
+        display: grid;
+        gap: 2px 24px;
+        grid-template-columns: auto auto auto;
+        margin-bottom: 24px;
+      }
+
+      a {
+        color: #0645ad;
+      }
+
+      section {
+        margin-top: 24px;
+      }
+
+      h2 {
+        font-size: 19px;
+        margin-bottom: 8px;
+      }
+
+      h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      ul {
+        margin: 8px 0 0 28px;
+        padding-left: 18px;
+      }
+
+      li {
+        margin-bottom: 6px;
+        padding-left: 10px;
+      }
+
+      .education li,
+      .project {
+        margin-bottom: 24px;
+      }
+
+      .project p {
+        margin: 0 0 14px 32px;
+      }
+
+      .github {
+        font-weight: 700;
+      }
+
+      .print {
+        background: #06366f;
+        border: 0;
+        bottom: 24px;
+        color: white;
+        cursor: pointer;
+        display: inline-block;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 11px 16px;
+        position: fixed;
+        right: 24px;
+        text-decoration: none;
+      }
+
+      @media print {
+        body {
+          background: white;
+        }
+
+        main {
+          margin: 0;
+          padding: 22px 46px;
+          width: 100%;
+        }
+
+        .print {
+          display: none;
+        }
+      }
+
+      @media (max-width: 760px) {
+        body {
+          font-size: 16px;
+        }
+
+        main {
+          padding: 26px;
+        }
+
+        header {
+          align-items: start;
+          display: grid;
+          gap: 10px;
+        }
+
+        h1 {
+          font-size: 40px;
+        }
+
+        .contact {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Mustafa Ince</h1>
+        <p class="title">Software Engineer</p>
+      </header>
+
+      <div class="contact">
+        <p><strong>Phone:</strong> +90 541 569 1198</p>
+        <p><strong>E-mail:</strong> <a href="mailto:mustafancee.52@gmail.com">mustafancee.52@gmail.com</a></p>
+        <p><strong>Istanbul/Turkey</strong></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mustafa-ince-3b3b2a300">www.linkedin.com/in/mustafa-ince-3b3b2a300</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/mstfnce">https://github.com/mstfnce</a></p>
+      </div>
+
+      <section>
+        <p>
+          <strong>Profile:</strong>
+          Software Engineering student at Haliç University with a strong foundation in algorithms, data structures, and object-oriented programming.
+          Passionate about mobile app development and continuously improving backend skills.
+        </p>
+      </section>
+
+      <section>
+        <h2>Skills:</h2>
+        <ul>
+          <li>Programming Languages: Python, C++, Java, Javascript, C#</li>
+          <li>Object-Oriented Programming (OOP) principles</li>
+          <li>Algorithms and Data Structures</li>
+          <li>SQL - Database queries</li>
+          <li>Mobile App Development - Java (Android)</li>
+          <li>HTML, CSS, Bootstrap</li>
+          <li>React</li>
+          <li>Asp .Net Core</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Education:</h2>
+        <ul class="education">
+          <li>
+            Haliç University - Bachelor of Science in Software Engineering<br />
+            09/2022 - Present, 3rd grade, Istanbul, Turkey
+          </li>
+          <li>
+            Ünye Science High School - Science Track<br />
+            Graduation Year: 2022, Ünye, Turkey
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Projects:</h2>
+
+        <article class="project">
+          <ul>
+            <li><h3>Task Tracker App (Java - Android)</h3></li>
+          </ul>
+          <p>
+            A mobile application that allows users to create goals and track their daily progress in a visual and organized way.
+            Features include adding, deleting, and editing tasks; filtering by completed/incomplete; progress tracking via percentage; and a clean XML-based user interface.
+            Data stored locally with SharedPreferences. Developed using RecyclerView, ProgressBar, and DonutChart components.
+          </p>
+          <p class="github">GitHub: <a href="https://github.com/mstfnce/Task-Tracker-App">https://github.com/mstfnce/Task-Tracker-App</a></p>
+        </article>
+
+        <article class="project">
+          <ul>
+            <li><h3>CashFlow App (Java - Android)</h3></li>
+          </ul>
+          <p>
+            A simple financial management tool to monitor income and expenses.
+            Users can define categories, add entries with dates, amounts, and descriptions, and view daily/weekly/monthly summaries.
+            Built with Material Design, stores data locally with SharedPreferences, and visualizes expenses via progress bars.
+          </p>
+          <p class="github">GitHub: <a href="https://github.com/mstfnce/CashFlow-App">https://github.com/mstfnce/CashFlow-App</a></p>
+        </article>
+      </section>
+    </main>
+
+    <a class="print" href="download-cv.php">Download PDF</a>
+  </body>
+</html>

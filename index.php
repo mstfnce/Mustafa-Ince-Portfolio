@@ -114,7 +114,7 @@ require __DIR__ . '/includes/header.php';
     <div class="about-image-col">
       <div class="image-wrapper">
         <div class="image-border-frame">
-          <img src="https://via.placeholder.com/400x500/111111/c8a96e?text=MI" alt="Mustafa İnce" id="profile-pic" />
+          <img src="assets/img/profile.svg" alt="Mustafa İnce profil görseli" id="profile-pic" />
         </div>
         <div class="image-tag">
           <span class="tag-mono">Mustafa İnce</span>
