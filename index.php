@@ -181,9 +181,8 @@ require __DIR__ . '/includes/header.php';
         <div class="skill-node node-4" data-skill="SQL Database">SQL</div>
         <div class="skill-node node-5" data-skill="React.js">RCT</div>
         <div class="skill-node node-6" data-skill="HTML / CSS">WEB</div>
-        <div class="skill-node node-7" data-skill="Algorithms & DSA">DSA</div>
-        <div class="skill-node node-8" data-skill="OOP Principles">OOP</div>
-        <div class="skill-node node-9" data-skill="ASP.NET Core">.NET</div>
+        <div class="skill-node node-7" data-skill="OOP Principles">OOP</div>
+        <div class="skill-node node-8" data-skill="ASP.NET Core">.NET</div>
       </div>
       <div class="skill-tooltip" id="skillTooltip"></div>
     </div>
