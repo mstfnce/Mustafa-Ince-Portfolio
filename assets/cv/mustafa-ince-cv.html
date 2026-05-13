@@ -6,10 +6,13 @@
     <title>Mustafa Ince CV</title>
     <style>
       :root {
-        --blue: #2f65b9;
-        --ink: #111111;
-        --muted: #333333;
+        --accent: #1f4f8f;
+        --accent-soft: #eaf1fb;
+        --ink: #111827;
+        --muted: #4b5563;
+        --line: #d7deea;
         --paper: #ffffff;
+        --page: #eef2f7;
       }
 
       * {
@@ -18,105 +21,188 @@
 
       body {
         margin: 0;
-        background: #eeeeee;
+        background: var(--page);
         color: var(--ink);
-        font-family: "Times New Roman", Times, serif;
-        font-size: 18px;
-        line-height: 1.25;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+      }
+
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
 
       main {
-        width: min(900px, calc(100% - 32px));
+        width: min(980px, calc(100% - 32px));
         margin: 28px auto;
         background: var(--paper);
-        padding: 30px 58px 48px;
+        border: 1px solid var(--line);
+        box-shadow: 0 18px 50px rgba(17, 24, 39, 0.08);
       }
 
-      header {
-        align-items: end;
-        border-bottom: 3px solid var(--blue);
+      .hero {
+        border-bottom: 1px solid var(--line);
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 1fr auto;
+        padding: 42px 48px 28px;
+      }
+
+      .name {
+        color: var(--accent);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 48px;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .role {
+        color: var(--ink);
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        margin: 10px 0 0;
+        text-transform: uppercase;
+      }
+
+      .contact {
+        color: var(--muted);
+        display: grid;
+        font-size: 14px;
+        gap: 7px;
+        justify-items: end;
+        text-align: right;
+      }
+
+      .content {
+        display: grid;
+        gap: 34px;
+        grid-template-columns: 280px 1fr;
+        padding: 34px 48px 46px;
+      }
+
+      aside,
+      .main-col {
+        min-width: 0;
+      }
+
+      section + section {
+        margin-top: 28px;
+      }
+
+      h2 {
+        align-items: center;
+        color: var(--accent);
         display: flex;
-        justify-content: space-between;
-        margin-bottom: 24px;
-        padding-bottom: 8px;
+        font-size: 13px;
+        gap: 10px;
+        letter-spacing: 0.16em;
+        margin: 0 0 13px;
+        text-transform: uppercase;
       }
 
-      h1,
-      h2,
-      h3,
+      h2::after {
+        background: var(--line);
+        content: "";
+        flex: 1;
+        height: 1px;
+      }
+
+      h3 {
+        font-size: 16px;
+        margin: 0 0 6px;
+      }
+
       p {
         margin: 0;
       }
 
-      h1 {
-        color: #06366f;
-        font-size: 48px;
-        font-weight: 400;
-        line-height: 1;
+      .summary {
+        color: var(--muted);
       }
 
-      .title {
-        color: #06366f;
-        font-size: 22px;
-        margin-bottom: 4px;
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
       }
 
-      .contact {
-        display: grid;
-        gap: 2px 24px;
-        grid-template-columns: auto auto auto;
-        margin-bottom: 24px;
+      .chip {
+        background: var(--accent-soft);
+        border: 1px solid #d7e5f8;
+        color: #153f73;
+        font-size: 13px;
+        padding: 6px 9px;
       }
 
-      a {
-        color: #0645ad;
-      }
-
-      section {
-        margin-top: 24px;
-      }
-
-      h2 {
-        font-size: 19px;
-        margin-bottom: 8px;
-      }
-
-      h3 {
-        font-size: 18px;
-        margin-bottom: 12px;
-      }
-
-      ul {
-        margin: 8px 0 0 28px;
+      .skill-list,
+      .education-list {
+        color: var(--muted);
+        margin: 0;
         padding-left: 18px;
       }
 
-      li {
-        margin-bottom: 6px;
-        padding-left: 10px;
+      .skill-list li,
+      .education-list li {
+        margin-bottom: 8px;
       }
 
-      .education li,
-      .project {
-        margin-bottom: 24px;
-      }
-
-      .project p {
-        margin: 0 0 14px 32px;
-      }
-
-      .github {
+      .education-title {
+        color: var(--ink);
         font-weight: 700;
       }
 
-      .print {
-        background: #06366f;
-        border: 0;
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .project {
+        border: 1px solid var(--line);
+        margin-bottom: 14px;
+        padding: 16px 18px;
+      }
+
+      .project-head {
+        align-items: start;
+        display: flex;
+        gap: 16px;
+        justify-content: space-between;
+      }
+
+      .stack {
+        background: #f6f8fb;
+        border: 1px solid var(--line);
+        color: var(--muted);
+        flex: 0 0 auto;
+        font-size: 12px;
+        padding: 4px 8px;
+      }
+
+      .project p {
+        color: var(--muted);
+        margin-top: 8px;
+      }
+
+      .project-link {
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+
+      .download {
+        background: var(--accent);
         bottom: 24px;
         color: white;
-        cursor: pointer;
         display: inline-block;
-        font-family: Arial, Helvetica, sans-serif;
         font-size: 14px;
         font-weight: 700;
         padding: 11px 16px;
@@ -125,127 +211,338 @@
         text-decoration: none;
       }
 
+      .download:hover {
+        text-decoration: none;
+      }
+
+      @page {
+        size: A4;
+        margin: 9mm;
+      }
+
       @media print {
         body {
           background: white;
+          font-size: 9.5px;
+          line-height: 1.22;
         }
 
         main {
+          border: 0;
+          box-shadow: none;
           margin: 0;
-          padding: 22px 46px;
           width: 100%;
         }
 
-        .print {
+        .hero {
+          gap: 12px;
+          padding: 0 0 8px;
+        }
+
+        .content {
+          display: block;
+          padding: 10px 0 0;
+        }
+
+        .name {
+          font-size: 28px;
+        }
+
+        .role {
+          font-size: 11px;
+          margin-top: 5px;
+        }
+
+        .contact {
+          font-size: 10px;
+          gap: 2px;
+        }
+
+        section + section {
+          margin-top: 9px;
+        }
+
+        h2 {
+          font-size: 9.5px;
+          margin-bottom: 5px;
+        }
+
+        h3 {
+          font-size: 10.5px;
+          margin-bottom: 0;
+        }
+
+        .chips {
+          gap: 4px;
+        }
+
+        .chip {
+          font-size: 9.5px;
+          padding: 3px 5px;
+        }
+
+        .skill-list,
+        .education-list {
+          padding-left: 14px;
+        }
+
+        .skill-list li,
+        .education-list li {
+          margin-bottom: 2px;
+        }
+
+        aside {
+          display: grid;
+          gap: 9px 16px;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        aside section {
+          margin-top: 0;
+        }
+
+        aside section:first-child,
+        aside section:last-child {
+          grid-column: 1 / -1;
+        }
+
+        .main-col {
+          margin-top: 10px;
+        }
+
+        .main-col section {
+          display: grid;
+          gap: 6px 12px;
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .main-col h2 {
+          grid-column: 1 / -1;
+        }
+
+        .project {
+          border: 0;
+          border-top: 1px solid var(--line);
+          break-inside: avoid;
+          margin-bottom: 0;
+          padding: 5px 0 0;
+        }
+
+        .project-head {
+          display: block;
+        }
+
+        .stack {
+          background: transparent;
+          border: 0;
+          display: block;
+          font-size: 8.5px;
+          padding: 0;
+        }
+
+        .project p {
+          display: none;
+        }
+
+        .project-link {
+          font-size: 8.5px;
+          margin-top: 1px;
+        }
+
+        .download {
           display: none;
         }
       }
 
       @media (max-width: 760px) {
-        body {
-          font-size: 16px;
-        }
-
-        main {
-          padding: 26px;
-        }
-
-        header {
-          align-items: start;
-          display: grid;
-          gap: 10px;
-        }
-
-        h1 {
-          font-size: 40px;
+        .hero,
+        .content {
+          grid-template-columns: 1fr;
+          padding-left: 24px;
+          padding-right: 24px;
         }
 
         .contact {
-          grid-template-columns: 1fr;
+          justify-items: start;
+          text-align: left;
+        }
+
+        .project-head {
+          display: grid;
+        }
+
+        .stack {
+          width: fit-content;
         }
       }
     </style>
   </head>
   <body>
     <main>
-      <header>
-        <h1>Mustafa Ince</h1>
-        <p class="title">Software Engineer</p>
+      <header class="hero">
+        <div>
+          <h1 class="name">Mustafa Ince</h1>
+          <p class="role">Software Engineer</p>
+        </div>
+        <div class="contact">
+          <span>Phone: +90 541 569 1198</span>
+          <a href="mailto:mustafancee.52@gmail.com">mustafancee.52@gmail.com</a>
+          <span>Istanbul, Turkey</span>
+          <a href="https://www.linkedin.com/in/mustafa-ince-3b3b2a300">linkedin.com/in/mustafa-ince-3b3b2a300</a>
+          <a href="https://github.com/mstfnce">github.com/mstfnce</a>
+        </div>
       </header>
 
-      <div class="contact">
-        <p><strong>Phone:</strong> +90 541 569 1198</p>
-        <p><strong>E-mail:</strong> <a href="mailto:mustafancee.52@gmail.com">mustafancee.52@gmail.com</a></p>
-        <p><strong>Istanbul/Turkey</strong></p>
-        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/mustafa-ince-3b3b2a300">www.linkedin.com/in/mustafa-ince-3b3b2a300</a></p>
-        <p><strong>GitHub:</strong> <a href="https://github.com/mstfnce">https://github.com/mstfnce</a></p>
+      <div class="content">
+        <aside>
+          <section>
+            <h2>Profile</h2>
+            <p class="summary">
+              Software Engineering student at Haliç University with a strong foundation in algorithms, data structures, and object-oriented programming.
+              Passionate about mobile app development and continuously improving backend skills.
+            </p>
+          </section>
+
+          <section>
+            <h2>Core Skills</h2>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">C++</span>
+              <span class="chip">Java</span>
+              <span class="chip">JavaScript</span>
+              <span class="chip">C#</span>
+              <span class="chip">SQL</span>
+              <span class="chip">React</span>
+              <span class="chip">ASP.NET Core</span>
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">Bootstrap</span>
+            </div>
+          </section>
+
+          <section>
+            <h2>Strengths</h2>
+            <ul class="skill-list">
+              <li>Object-Oriented Programming principles</li>
+              <li>Algorithms and Data Structures</li>
+              <li>Database queries and basic schema design</li>
+              <li>Mobile App Development with Java Android</li>
+              <li>Responsive web interface development</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Education</h2>
+            <ul class="education-list">
+              <li>
+                <span class="education-title">Haliç University</span><br />
+                Bachelor of Science in Software Engineering<br />
+                <span class="meta">09/2022 - Present, 3rd grade</span>
+              </li>
+              <li>
+                <span class="education-title">Ünye Science High School</span><br />
+                Science Track<br />
+                <span class="meta">Graduation Year: 2022</span>
+              </li>
+            </ul>
+          </section>
+        </aside>
+
+        <div class="main-col">
+          <section>
+            <h2>Projects</h2>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>Mustafa Ince Portfolio</h3>
+                <span class="stack">PHP · MySQL · JavaScript</span>
+              </div>
+              <p>
+                Full-stack web portfolio with dynamic project listing, AJAX contact form, secure admin login, sessions, cookies, and database-driven project management.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/Mustafa-Ince-Portfolio">github.com/mstfnce/Mustafa-Ince-Portfolio</a>
+            </article>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>Dotnet Store</h3>
+                <span class="stack">ASP.NET Core MVC</span>
+              </div>
+              <p>
+                E-commerce project with product, category, user management, cart, and order features. Built to practice MVC architecture and database-backed workflows.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/Dotnet-Store">github.com/mstfnce/Dotnet-Store</a>
+            </article>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>MovieApp</h3>
+                <span class="stack">React · Vite · TMDB API</span>
+              </div>
+              <p>
+                Movie discovery app with search, movie detail pages, theme switching, and watchlist features using the TMDB API.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/MovieApp">github.com/mstfnce/MovieApp</a>
+            </article>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>Weather App</h3>
+                <span class="stack">React · OpenWeather API</span>
+              </div>
+              <p>
+                Responsive weather app showing current weather, hourly forecast, 5-day forecast, and sunrise/sunset times.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/Weather-App">github.com/mstfnce/Weather-App</a>
+            </article>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>Task Tracker App</h3>
+                <span class="stack">Java · Android</span>
+              </div>
+              <p>
+                Android app for creating goals and tracking daily progress with task editing, filtering, progress visualization, SharedPreferences, RecyclerView, ProgressBar, and DonutChart components.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/Task-Tracker-App">github.com/mstfnce/Task-Tracker-App</a>
+            </article>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>CashFlow App</h3>
+                <span class="stack">Java · Android</span>
+              </div>
+              <p>
+                Finance management app for tracking income and expenses with categories, dated entries, daily/weekly/monthly summaries, Material Design, and local storage.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/CashFlow-App">github.com/mstfnce/CashFlow-App</a>
+            </article>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>Quiz App</h3>
+                <span class="stack">JavaScript</span>
+              </div>
+              <p>
+                Interactive quiz application with timer, progress tracking, answer validation, and score calculation.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/Quiz-App">github.com/mstfnce/Quiz-App</a>
+            </article>
+
+            <article class="project">
+              <div class="project-head">
+                <h3>Blog Site</h3>
+                <span class="stack">HTML · CSS · Bootstrap</span>
+              </div>
+              <p>
+                Dark-themed responsive blog layout with navbar, hero section, blog cards, category sidebar, and trending topics area.
+              </p>
+              <a class="project-link" href="https://github.com/mstfnce/blog-site">github.com/mstfnce/blog-site</a>
+            </article>
+          </section>
+        </div>
       </div>
-
-      <section>
-        <p>
-          <strong>Profile:</strong>
-          Software Engineering student at Haliç University with a strong foundation in algorithms, data structures, and object-oriented programming.
-          Passionate about mobile app development and continuously improving backend skills.
-        </p>
-      </section>
-
-      <section>
-        <h2>Skills:</h2>
-        <ul>
-          <li>Programming Languages: Python, C++, Java, Javascript, C#</li>
-          <li>Object-Oriented Programming (OOP) principles</li>
-          <li>Algorithms and Data Structures</li>
-          <li>SQL - Database queries</li>
-          <li>Mobile App Development - Java (Android)</li>
-          <li>HTML, CSS, Bootstrap</li>
-          <li>React</li>
-          <li>Asp .Net Core</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Education:</h2>
-        <ul class="education">
-          <li>
-            Haliç University - Bachelor of Science in Software Engineering<br />
-            09/2022 - Present, 3rd grade, Istanbul, Turkey
-          </li>
-          <li>
-            Ünye Science High School - Science Track<br />
-            Graduation Year: 2022, Ünye, Turkey
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Projects:</h2>
-
-        <article class="project">
-          <ul>
-            <li><h3>Task Tracker App (Java - Android)</h3></li>
-          </ul>
-          <p>
-            A mobile application that allows users to create goals and track their daily progress in a visual and organized way.
-            Features include adding, deleting, and editing tasks; filtering by completed/incomplete; progress tracking via percentage; and a clean XML-based user interface.
-            Data stored locally with SharedPreferences. Developed using RecyclerView, ProgressBar, and DonutChart components.
-          </p>
-          <p class="github">GitHub: <a href="https://github.com/mstfnce/Task-Tracker-App">https://github.com/mstfnce/Task-Tracker-App</a></p>
-        </article>
-
-        <article class="project">
-          <ul>
-            <li><h3>CashFlow App (Java - Android)</h3></li>
-          </ul>
-          <p>
-            A simple financial management tool to monitor income and expenses.
-            Users can define categories, add entries with dates, amounts, and descriptions, and view daily/weekly/monthly summaries.
-            Built with Material Design, stores data locally with SharedPreferences, and visualizes expenses via progress bars.
-          </p>
-          <p class="github">GitHub: <a href="https://github.com/mstfnce/CashFlow-App">https://github.com/mstfnce/CashFlow-App</a></p>
-        </article>
-      </section>
     </main>
 
-    <a class="print" href="download-cv.php">Download PDF</a>
+    <a class="download" href="Mustafa_Ince_CV.pdf" download>Download PDF</a>
   </body>
 </html>
