@@ -33,6 +33,10 @@ CREATE TABLE IF NOT EXISTS admins (
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
+INSERT INTO admins (username, password_hash) VALUES
+('admin', '$2y$10$zWw5nUMK.G2nb1dQZhqcZeQca.v1fMwHDeO.uFj58OCHBjOBlhbBm')
+ON DUPLICATE KEY UPDATE password_hash = VALUES(password_hash);
+
 INSERT INTO projects (title, description, tech, tech_class, tag, is_featured, sort_order) VALUES
 ('Weather-Sphere', 'Real-time weather application using React.js and OpenWeather API with dynamic UI.', 'React', 'react-dot', 'Featured', 1, 1),
 ('Cyber-Store', 'Full-scale E-Commerce platform built with .NET and SQL Server backend.', '.NET', 'dotnet-dot', 'Featured', 1, 2),

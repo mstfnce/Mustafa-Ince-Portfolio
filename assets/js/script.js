@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "HTML/CSS",
     "OOP",
     "Algorithms",
+    ".Net",
   ];
 
   const devProfile = {
@@ -219,17 +220,55 @@ document.addEventListener("DOMContentLoaded", () => {
   const contactForm = document.getElementById("contactForm");
   const contactStatus = document.getElementById("contactStatus");
 
+  function showContactStatus(message, type = "") {
+    if (!contactStatus) return;
+    contactStatus.textContent = message;
+    contactStatus.className = type ? `form-status ${type}` : "form-status";
+  }
+
+  function validateContactForm(formData) {
+    const name = (formData.get("name") || "").trim();
+    const email = (formData.get("email") || "").trim();
+    const subject = (formData.get("subject") || "").trim();
+    const message = (formData.get("message") || "").trim();
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!name || !email || !subject || !message) {
+      return "Lütfen tüm alanları doldurun.";
+    }
+
+    if (name.length < 3) {
+      return "Ad soyad en az 3 karakter olmalıdır.";
+    }
+
+    if (!emailPattern.test(email)) {
+      return "Geçerli bir e-posta adresi girin.";
+    }
+
+    if (subject.length < 3) {
+      return "Konu en az 3 karakter olmalıdır.";
+    }
+
+    if (message.length < 10) {
+      return "Mesaj en az 10 karakter olmalıdır.";
+    }
+
+    return "";
+  }
+
   contactForm?.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const submitBtn = contactForm.querySelector(".form-submit");
     const formData = new FormData(contactForm);
+    const validationError = validateContactForm(formData);
 
-    if (contactStatus) {
-      contactStatus.textContent = "Gönderiliyor...";
-      contactStatus.className = "form-status";
+    if (validationError) {
+      showContactStatus(validationError, "error");
+      return;
     }
 
+    showContactStatus("Gönderiliyor...");
     submitBtn?.setAttribute("disabled", "disabled");
 
     try {
@@ -240,22 +279,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const result = await response.json();
 
-      if (contactStatus) {
-        contactStatus.textContent = result.message || "İşlem tamamlandı.";
-        contactStatus.className = result.success
-          ? "form-status success"
-          : "form-status error";
-      }
+      showContactStatus(
+        result.message || "İşlem tamamlandı.",
+        result.success ? "success" : "error",
+      );
 
       if (result.success) {
         contactForm.reset();
       }
     } catch (error) {
-      if (contactStatus) {
-        contactStatus.textContent =
-          "Bağlantı hatası oluştu. Lütfen tekrar deneyin.";
-        contactStatus.className = "form-status error";
-      }
+      showContactStatus(
+        "Bağlantı hatası oluştu. Lütfen tekrar deneyin.",
+        "error",
+      );
     } finally {
       submitBtn?.removeAttribute("disabled");
     }
