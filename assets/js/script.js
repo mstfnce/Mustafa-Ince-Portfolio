@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "React",
     "HTML/CSS",
     "OOP",
-    "Algorithms",
     ".NET",
   ];
 
@@ -36,6 +35,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // 2. HEADER SCROLL STATE
   // ==========================================
   const header = document.getElementById("header");
+  const logoAdminTrigger = document.getElementById("logoAdminTrigger");
+  let logoClickCount = 0;
+  let logoClickTimer;
+
+  logoAdminTrigger?.addEventListener("click", () => {
+    logoClickCount += 1;
+    clearTimeout(logoClickTimer);
+
+    if (logoClickCount >= 5) {
+      window.location.href = "admin/login.php";
+      return;
+    }
+
+    logoClickTimer = setTimeout(() => {
+      logoClickCount = 0;
+    }, 1500);
+  });
+
   window.addEventListener(
     "scroll",
     () => {

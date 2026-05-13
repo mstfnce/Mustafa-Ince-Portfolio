@@ -14,11 +14,11 @@
     <div class="noise-overlay"></div>
 
     <header class="main-header" id="header">
-      <div class="logo">
+      <button class="logo logo-admin-trigger" id="logoAdminTrigger" type="button" aria-label="Portfolio home">
         <span class="logo-bracket">[</span>
         <span class="logo-text">MI</span>
         <span class="logo-bracket">]</span>
-      </div>
+      </button>
       <nav class="nav-links">
         <a href="#about" class="nav-item" data-index="01">About</a>
         <a href="#skills" class="nav-item" data-index="02">Skills</a>

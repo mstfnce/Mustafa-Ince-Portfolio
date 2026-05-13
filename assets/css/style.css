@@ -74,6 +74,8 @@ body {
 }
 
 .logo {
+  background: transparent;
+  border: 0;
   font-family: var(--font-sans);
   font-weight: 800;
   font-size: 1rem;
@@ -81,6 +83,7 @@ body {
   display: flex;
   align-items: center;
   gap: 2px;
+  cursor: pointer;
 }
 .logo-bracket {
   color: var(--gold);
@@ -778,53 +781,48 @@ body {
 
 .node-1 {
   left: 50%;
-  top: 0;
+  top: 5%;
   transform: translate(-50%, -50%);
 }
 .node-2 {
-  left: 82%;
-  top: 12%;
+  left: 84%;
+  top: 16%;
   transform: translate(-50%, -50%);
 }
 .node-3 {
-  left: 100%;
+  left: 104%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 .node-4 {
-  left: 82%;
-  top: 88%;
+  left: 84%;
+  top: 84%;
   transform: translate(-50%, -50%);
 }
 .node-5 {
   left: 50%;
-  top: 100%;
+  top: 95%;
   transform: translate(-50%, -50%);
 }
 .node-6 {
-  left: 18%;
-  top: 88%;
+  left: 16%;
+  top: 84%;
   transform: translate(-50%, -50%);
 }
 .node-7 {
-  left: 0;
+  left: -4%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 .node-8 {
-  left: 18%;
-  top: 12%;
+  left: 16%;
+  top: 16%;
   transform: translate(-50%, -50%);
-}
-.node-9 {
-  left: 50%;
-  top: 50%;
-  transform: translate(76px, -50%);
 }
 
 .skill-tooltip {
   position: absolute;
-  bottom: -2rem;
+  top: -2.5rem;
   left: 50%;
   transform: translateX(-50%);
   font-size: 0.7rem;
@@ -834,6 +832,7 @@ body {
   transition: opacity 0.3s;
   white-space: nowrap;
   pointer-events: none;
+  z-index: 20;
 }
 
 /* Skill bars */
@@ -1069,7 +1068,7 @@ body {
   background: var(--bg-2);
 }
 .contact-inner {
-  max-width: 900px;
+  max-width: 1320px;
 }
 .contact-heading {
   margin-bottom: 3rem;
@@ -1077,8 +1076,8 @@ body {
 
 .contact-body {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: minmax(300px, 1fr) minmax(280px, 0.85fr) minmax(300px, 0.9fr);
+  gap: 3rem;
   align-items: start;
 }
 
@@ -1186,6 +1185,92 @@ a.detail-val:hover {
   letter-spacing: 0.12em;
   color: var(--gray-dim);
   text-transform: uppercase;
+}
+
+.contact-aside {
+  border: 1px solid rgba(200, 169, 110, 0.12);
+  background:
+    linear-gradient(135deg, rgba(200, 169, 110, 0.07), transparent 45%),
+    rgba(10, 10, 10, 0.28);
+  min-height: 100%;
+  padding: 1.25rem;
+}
+
+.availability-panel {
+  border-bottom: 1px solid rgba(200, 169, 110, 0.1);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.panel-kicker {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.65rem;
+  text-transform: uppercase;
+}
+
+.availability-panel h3 {
+  color: var(--white);
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin-bottom: 0.8rem;
+}
+
+.availability-panel p,
+.workflow-list li {
+  color: var(--gray);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.contact-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(200, 169, 110, 0.09);
+  border: 1px solid rgba(200, 169, 110, 0.09);
+  margin-bottom: 1.35rem;
+}
+
+.metric-item {
+  background: var(--bg-2);
+  padding: 1rem 0.8rem;
+}
+
+.metric-num {
+  display: block;
+  color: var(--gold);
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  line-height: 1;
+  margin-bottom: 0.35rem;
+}
+
+.metric-label {
+  color: var(--gray-dim);
+  display: block;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.workflow-list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.workflow-list li {
+  border-bottom: 1px solid rgba(200, 169, 110, 0.08);
+  padding: 0.62rem 0;
+}
+
+.workflow-list li:last-child {
+  border-bottom: 0;
 }
 
 .contact-form {
