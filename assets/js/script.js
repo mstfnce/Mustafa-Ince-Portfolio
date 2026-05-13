@@ -175,21 +175,83 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ==========================================
-  // 7. PROJECT CARD MAGNETIC HOVER
+  // 7. PROJECTS — AJAX LOAD & CARD HOVER
   // ==========================================
-  document.querySelectorAll(".project-card").forEach((card) => {
-    card.addEventListener("mousemove", (e) => {
-      const rect = card.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const deltaX = ((e.clientX - centerX) / rect.width) * 6;
-      const deltaY = ((e.clientY - centerY) / rect.height) * 6;
-      card.style.transform = `perspective(800px) rotateX(${-deltaY}deg) rotateY(${deltaX}deg) translateZ(4px)`;
+  const projectsGrid = document.getElementById("projectsGrid");
+
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function bindProjectCardHover() {
+    document.querySelectorAll(".project-card").forEach((card) => {
+      if (card.dataset.hoverBound === "true") return;
+      card.dataset.hoverBound = "true";
+
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const deltaX = ((e.clientX - centerX) / rect.width) * 6;
+        const deltaY = ((e.clientY - centerY) / rect.height) * 6;
+        card.style.transform = `perspective(800px) rotateX(${-deltaY}deg) rotateY(${deltaX}deg) translateZ(4px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "";
+      });
     });
-    card.addEventListener("mouseleave", () => {
-      card.style.transform = "";
-    });
-  });
+  }
+
+  function renderProjectCard(project, index) {
+    const cardClass = Number(project.is_featured) === 1
+      ? "project-card featured"
+      : "project-card";
+    const projectUrl = project.project_url || "";
+    const arrow = projectUrl
+      ? `<a href="${escapeHtml(projectUrl)}" class="project-arrow" target="_blank" rel="noopener">→</a>`
+      : '<span class="project-arrow">→</span>';
+
+    return `
+      <div class="${cardClass}" data-num="${String(index + 1).padStart(2, "0")}">
+        <div class="project-inner">
+          <div class="project-top">
+            <span class="project-tag">${escapeHtml(project.tag)}</span>
+            <span class="project-tech ${escapeHtml(project.tech_class)}">${escapeHtml(project.tech)}</span>
+          </div>
+          <h3 class="project-name">${escapeHtml(project.title)}</h3>
+          <p class="project-desc">${escapeHtml(project.description)}</p>
+          <div class="project-bottom">${arrow}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  async function loadProjectsWithAjax() {
+    if (!projectsGrid) return;
+
+    try {
+      const response = await fetch("api/projects.php");
+      const result = await response.json();
+
+      if (!result.success || !Array.isArray(result.projects)) return;
+
+      projectsGrid.innerHTML = result.projects
+        .map((project, index) => renderProjectCard(project, index))
+        .join("");
+
+      bindProjectCardHover();
+    } catch (error) {
+      console.warn("Projects could not be loaded with AJAX.", error);
+    }
+  }
+
+  bindProjectCardHover();
+  loadProjectsWithAjax();
 
   // ==========================================
   // 8. ACTIVE NAV HIGHLIGHT ON SCROLL

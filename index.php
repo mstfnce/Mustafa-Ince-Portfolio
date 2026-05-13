@@ -258,7 +258,7 @@ require __DIR__ . '/includes/header.php';
     <h2 class="projects-heading">Tamamlanan <em>Görevler</em></h2>
   </div>
 
-  <div class="projects-grid">
+  <div class="projects-grid" id="projectsGrid">
     <?php if ($projects): ?>
       <?php foreach ($projects as $index => $project): ?>
         <?php
