@@ -1,13 +1,13 @@
 /**
- * MUSTAFA İNCE — PORTFOLIO CORE ENGINE
- * Version: 2.0 — Editorial Noir Build
+ * MUSTAFA INCE - PORTFOLIO CORE ENGINE
+ * Version: 2.0 - Editorial Noir Build
  */
 
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 1. DEVELOPER DATA
   // ==========================================
-  const developerName = "Mustafa İnce";
+  const developerName = "Mustafa Ince";
   const currentTitle = "Software Developer";
 
   const techSkills = [
@@ -296,23 +296,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!name || !email || !subject || !message) {
-      return "Lütfen tüm alanları doldurun.";
+      return "Please fill in all fields.";
     }
 
     if (name.length < 3) {
-      return "Ad soyad en az 3 karakter olmalıdır.";
+      return "Full name must be at least 3 characters.";
     }
 
     if (!emailPattern.test(email)) {
-      return "Geçerli bir e-posta adresi girin.";
+      return "Please enter a valid email address.";
     }
 
     if (subject.length < 3) {
-      return "Konu en az 3 karakter olmalıdır.";
+      return "Subject must be at least 3 characters.";
     }
 
     if (message.length < 10) {
-      return "Mesaj en az 10 karakter olmalıdır.";
+      return "Message must be at least 10 characters.";
     }
 
     return "";
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    showContactStatus("Gönderiliyor...");
+    showContactStatus("Sending...");
     submitBtn?.setAttribute("disabled", "disabled");
 
     try {
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const result = await response.json();
 
       showContactStatus(
-        result.message || "İşlem tamamlandı.",
+        result.message || "Request completed.",
         result.success ? "success" : "error",
       );
 
@@ -351,7 +351,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch (error) {
       showContactStatus(
-        "Bağlantı hatası oluştu. Lütfen tekrar deneyin.",
+        "Connection error. Please try again.",
         "error",
       );
     } finally {
@@ -364,7 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   console.clear();
   console.log(
-    "%c MUSTAFA İNCE PORTFOLIO ",
+    "%c MUSTAFA INCE PORTFOLIO ",
     "background:#c8a96e;color:#0a0a0a;font-weight:bold;font-size:14px;padding:6px 12px;",
   );
   console.log(

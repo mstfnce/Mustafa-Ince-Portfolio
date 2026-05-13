@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $csrfToken = $_POST['csrf_token'] ?? '';
 
     if (!hash_equals($_SESSION['csrf_token'], $csrfToken)) {
-        redirectWith('error', 'Güvenlik doğrulaması başarısız oldu.');
+        redirectWith('error', 'Security verification failed.');
     }
 
     $action = $_POST['action'] ?? '';
@@ -42,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($id > 0) {
             $stmt = $pdo->prepare('DELETE FROM projects WHERE id = ?');
             $stmt->execute([$id]);
-            redirectWith('success', 'Proje silindi.');
+            redirectWith('success', 'Project deleted.');
         }
 
-        redirectWith('error', 'Silinecek proje bulunamadı.');
+        redirectWith('error', 'Project to delete could not be found.');
     }
 
     if ($action === 'save') {
@@ -60,15 +60,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sortOrder = (int) ($_POST['sort_order'] ?? 0);
 
         if ($title === '') {
-            $errors[] = 'Proje başlığı zorunludur.';
+            $errors[] = 'Project title is required.';
         }
 
         if ($description === '') {
-            $errors[] = 'Proje açıklaması zorunludur.';
+            $errors[] = 'Project description is required.';
         }
 
         if ($tech === '') {
-            $errors[] = 'Teknoloji alanı zorunludur.';
+            $errors[] = 'Technology field is required.';
         }
 
         if ($techClass === '') {
@@ -80,7 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         if ($projectUrl !== '' && !filter_var($projectUrl, FILTER_VALIDATE_URL)) {
-            $errors[] = 'Proje linki geçerli bir URL olmalıdır.';
+            $errors[] = 'Project link must be a valid URL.';
         }
 
         if (!$errors) {
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                      WHERE id = ?'
                 );
                 $stmt->execute([$title, $description, $tech, $techClass, $tag, $projectUrl, $isFeatured, $sortOrder, $id]);
-                redirectWith('success', 'Proje güncellendi.');
+                redirectWith('success', 'Project updated.');
             }
 
             $stmt = $pdo->prepare(
@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
             );
             $stmt->execute([$title, $description, $tech, $techClass, $tag, $projectUrl, $isFeatured, $sortOrder]);
-            redirectWith('success', 'Yeni proje eklendi.');
+            redirectWith('success', 'New project added.');
         }
 
         $editingProject = [
@@ -142,7 +142,7 @@ $formProject = $editingProject ?? [
 ];
 ?>
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -155,12 +155,12 @@ $formProject = $editingProject ?? [
         <div>
           <span class="admin-kicker">Portfolio Admin</span>
           <h1>Dashboard</h1>
-          <p class="admin-copy">Hoş geldin, <?= e($_SESSION['admin_username'] ?? 'admin') ?>. Projeleri ve gelen mesajları buradan yönetebilirsin.</p>
+          <p class="admin-copy">Welcome, <?= e($_SESSION['admin_username'] ?? 'admin') ?>. You can manage projects and incoming messages from here.</p>
         </div>
         <div class="admin-actions">
-          <a class="admin-link" href="../index.php" target="_blank" rel="noopener">Siteyi Aç</a>
+          <a class="admin-link" href="../index.php" target="_blank" rel="noopener">Open Site</a>
           <a class="form-submit" href="logout.php">
-            <span>Çıkış Yap</span>
+            <span>Logout</span>
             <span class="btn-arrow">↗</span>
           </a>
         </div>
@@ -186,58 +186,58 @@ $formProject = $editingProject ?? [
 
           <div class="admin-panel-head">
             <span class="admin-kicker"><?= (int) $formProject['id'] > 0 ? 'Edit Project' : 'New Project' ?></span>
-            <h2><?= (int) $formProject['id'] > 0 ? 'Projeyi Düzenle' : 'Proje Ekle' ?></h2>
+            <h2><?= (int) $formProject['id'] > 0 ? 'Edit Project' : 'Add Project' ?></h2>
           </div>
 
           <label>
-            <span>Başlık</span>
+            <span>Title</span>
             <input class="form-input" type="text" name="title" value="<?= e($formProject['title']) ?>" required />
           </label>
 
           <label>
-            <span>Açıklama</span>
+            <span>Description</span>
             <textarea class="form-input form-textarea" name="description" required><?= e($formProject['description']) ?></textarea>
           </label>
 
           <div class="admin-form-row">
             <label>
-              <span>Teknoloji</span>
+              <span>Technology</span>
               <input class="form-input" type="text" name="tech" value="<?= e($formProject['tech']) ?>" placeholder="React" required />
             </label>
             <label>
-              <span>CSS Sınıfı</span>
+              <span>CSS Class</span>
               <input class="form-input" type="text" name="tech_class" value="<?= e($formProject['tech_class']) ?>" placeholder="react-dot" />
             </label>
           </div>
 
           <div class="admin-form-row">
             <label>
-              <span>Etiket</span>
+              <span>Tag</span>
               <input class="form-input" type="text" name="tag" value="<?= e($formProject['tag']) ?>" placeholder="Featured" />
             </label>
             <label>
-              <span>Sıra</span>
+              <span>Order</span>
               <input class="form-input" type="number" name="sort_order" value="<?= (int) $formProject['sort_order'] ?>" min="0" />
             </label>
           </div>
 
           <label>
-            <span>Proje Linki</span>
+            <span>Project Link</span>
             <input class="form-input" type="url" name="project_url" value="<?= e($formProject['project_url'] ?? '') ?>" placeholder="https://example.com" />
           </label>
 
           <label class="admin-check">
             <input type="checkbox" name="is_featured" <?= !empty($formProject['is_featured']) ? 'checked' : '' ?> />
-            <span>Öne çıkarılmış proje</span>
+            <span>Featured project</span>
           </label>
 
           <div class="admin-form-actions">
             <button class="form-submit" type="submit">
-              <span><?= (int) $formProject['id'] > 0 ? 'Güncelle' : 'Ekle' ?></span>
+              <span><?= (int) $formProject['id'] > 0 ? 'Update' : 'Add' ?></span>
               <span class="btn-arrow">↗</span>
             </button>
             <?php if ((int) $formProject['id'] > 0): ?>
-              <a class="admin-link" href="dashboard.php">Yeni proje formu</a>
+              <a class="admin-link" href="dashboard.php">New project form</a>
             <?php endif; ?>
           </div>
         </form>
@@ -245,19 +245,19 @@ $formProject = $editingProject ?? [
         <section class="admin-panel">
           <div class="admin-panel-head">
             <span class="admin-kicker">Projects</span>
-            <h2>Proje Listesi</h2>
+            <h2>Project List</h2>
           </div>
 
           <div class="admin-table-wrap">
             <table class="admin-table">
               <thead>
                 <tr>
-                  <th>Sıra</th>
-                  <th>Başlık</th>
-                  <th>Teknoloji</th>
-                  <th>Etiket</th>
-                  <th>Durum</th>
-                  <th>İşlem</th>
+                  <th>Order</th>
+                  <th>Title</th>
+                  <th>Technology</th>
+                  <th>Tag</th>
+                  <th>Status</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -269,12 +269,12 @@ $formProject = $editingProject ?? [
                     <td><?= e($project['tag']) ?></td>
                     <td><?= !empty($project['is_featured']) ? 'Featured' : 'Public' ?></td>
                     <td class="admin-table-actions">
-                      <a class="admin-link" href="dashboard.php?edit=<?= (int) $project['id'] ?>">Düzenle</a>
-                      <form method="post" onsubmit="return confirm('Bu projeyi silmek istediğine emin misin?');">
+                      <a class="admin-link" href="dashboard.php?edit=<?= (int) $project['id'] ?>">Edit</a>
+                      <form method="post" onsubmit="return confirm('Are you sure you want to delete this project?');">
                         <input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>" />
                         <input type="hidden" name="action" value="delete" />
                         <input type="hidden" name="id" value="<?= (int) $project['id'] ?>" />
-                        <button class="admin-danger" type="submit">Sil</button>
+                        <button class="admin-danger" type="submit">Delete</button>
                       </form>
                     </td>
                   </tr>
@@ -288,18 +288,18 @@ $formProject = $editingProject ?? [
       <section class="admin-panel">
         <div class="admin-panel-head">
           <span class="admin-kicker">Messages</span>
-          <h2>Son İletişim Mesajları</h2>
+          <h2>Latest Contact Messages</h2>
         </div>
 
         <div class="admin-table-wrap">
           <table class="admin-table">
             <thead>
               <tr>
-                <th>Ad</th>
-                <th>E-posta</th>
-                <th>Konu</th>
-                <th>Mesaj</th>
-                <th>Tarih</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
@@ -315,7 +315,7 @@ $formProject = $editingProject ?? [
                 <?php endforeach; ?>
               <?php else: ?>
                 <tr>
-                  <td colspan="5">Henüz mesaj yok.</td>
+                  <td colspan="5">No messages yet.</td>
                 </tr>
               <?php endif; ?>
             </tbody>

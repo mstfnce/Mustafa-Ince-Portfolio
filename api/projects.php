@@ -18,6 +18,6 @@ try {
     http_response_code(500);
     echo json_encode([
         'success' => false,
-        'message' => 'Projeler yuklenirken bir hata olustu.',
+        'message' => 'An error occurred while loading projects.',
     ]);
 }

@@ -8,13 +8,13 @@ $message = trim($_POST['message'] ?? '');
 
 if ($name === '' || $email === '' || $subject === '' || $message === '') {
     http_response_code(422);
-    echo json_encode(['success' => false, 'message' => 'Lutfen tum alanlari doldurun.']);
+    echo json_encode(['success' => false, 'message' => 'Please fill in all fields.']);
     exit;
 }
 
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     http_response_code(422);
-    echo json_encode(['success' => false, 'message' => 'Gecerli bir e-posta adresi girin.']);
+    echo json_encode(['success' => false, 'message' => 'Please enter a valid email address.']);
     exit;
 }
 
@@ -27,4 +27,4 @@ $stmt = $pdo->prepare(
 
 $stmt->execute([$name, $email, $subject, $message]);
 
-echo json_encode(['success' => true, 'message' => 'Mesajiniz basariyla kaydedildi.']);
+echo json_encode(['success' => true, 'message' => 'Your message has been saved successfully.']);

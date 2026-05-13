@@ -30,33 +30,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $error = 'Kullanici adi veya sifre hatali.';
+    $error = 'Invalid username or password.';
     $rememberedUsername = $username;
 }
 ?>
 <!doctype html>
-<html lang="tr">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Giriş</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body>
     <main class="admin-auth">
       <form class="admin-card" method="post">
-        <h1>Admin Giriş</h1>
+        <h1>Admin Login</h1>
         <?php if ($error !== ''): ?>
           <p class="admin-error"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') ?></p>
         <?php endif; ?>
-        <input class="form-input" type="text" name="username" placeholder="Kullanıcı adı" value="<?= htmlspecialchars($rememberedUsername, ENT_QUOTES, 'UTF-8') ?>" required />
-        <input class="form-input" type="password" name="password" placeholder="Şifre" required />
+        <input class="form-input" type="text" name="username" placeholder="Username" value="<?= htmlspecialchars($rememberedUsername, ENT_QUOTES, 'UTF-8') ?>" required />
+        <input class="form-input" type="password" name="password" placeholder="Password" required />
         <label class="admin-check">
           <input type="checkbox" name="remember_me" <?= $rememberedUsername !== '' ? 'checked' : '' ?> />
-          <span>Kullanıcı adımı hatırla</span>
+          <span>Remember my username</span>
         </label>
         <button class="form-submit" type="submit">
-          <span>Giriş Yap</span>
+          <span>Login</span>
           <span class="btn-arrow">↗</span>
         </button>
       </form>

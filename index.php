@@ -1,14 +1,14 @@
 <?php
-$pageTitle = 'Mustafa İnce - Software Developer';
+$pageTitle = 'Mustafa Ince - Software Developer';
 
-// Veritabanı bağlantısını çağırıyoruz.
+// Load database connection.
 require __DIR__ . '/includes/db.php';
 
-// projects tablosundaki projeleri sırasına göre çekiyoruz.
+// Fetch projects from the database.
 $stmt = $pdo->query('SELECT * FROM projects ORDER BY sort_order ASC');
 $projects = $stmt->fetchAll();
 
-// Header bölümünü sayfaya dahil ediyoruz.
+// Include the shared header.
 require __DIR__ . '/includes/header.php';
 ?>
 
@@ -17,33 +17,33 @@ require __DIR__ . '/includes/header.php';
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="eyebrow-line"></span>
-      <span class="eyebrow-text">Software Developer - İstanbul</span>
+      <span class="eyebrow-text">Software Developer - Istanbul</span>
     </div>
 
     <h1 class="hero-title">
       <span class="title-line reveal-line">Mustafa</span>
-      <span class="title-line reveal-line italic-accent">İnce<span class="title-dot">.</span></span>
+      <span class="title-line reveal-line italic-accent">Ince<span class="title-dot">.</span></span>
     </h1>
 
     <div class="hero-sub">
       <p class="hero-desc">
-        İnternetin temel katmanlarından başlayarak<br />
-        modern dijital deneyimler inşa ediyorum.
+        I build modern digital experiences<br />
+        from interface to database layer.
       </p>
       <div class="hero-actions">
         <button class="scroll-btn" id="scrollBtn">
-          <span>Keşfet</span>
+          <span>Explore</span>
           <span class="scroll-arrow">↓</span>
         </button>
         <div class="hero-stats">
           <div class="stat">
             <span class="stat-num" data-target="9">0</span>
-            <span class="stat-label">Teknoloji</span>
+            <span class="stat-label">Technologies</span>
           </div>
           <div class="stat-divider"></div>
           <div class="stat">
             <span class="stat-num" data-target="<?= count($projects) > 0 ? count($projects) : 6 ?>">0</span>
-            <span class="stat-label">Proje</span>
+            <span class="stat-label">Projects</span>
           </div>
         </div>
       </div>
@@ -105,17 +105,17 @@ require __DIR__ . '/includes/header.php';
 <section id="about" class="about-section section">
   <div class="section-label">
     <span class="label-num">01 -</span>
-    <span class="label-text">Hakkımda</span>
+    <span class="label-text">About</span>
   </div>
 
   <div class="about-grid">
     <div class="about-image-col">
       <div class="image-wrapper">
         <div class="image-border-frame">
-          <img src="assets/img/profile.svg" alt="Mustafa İnce profil görseli" id="profile-pic" />
+          <img src="assets/img/profile.svg" alt="Mustafa Ince profile visual" id="profile-pic" />
         </div>
         <div class="image-tag">
-          <span class="tag-mono">Mustafa İnce</span>
+          <span class="tag-mono">Mustafa Ince</span>
           <span class="tag-sub">Software Developer</span>
         </div>
       </div>
@@ -123,33 +123,32 @@ require __DIR__ . '/includes/header.php';
 
     <div class="about-text-col">
       <h2 class="about-heading">
-        Karmaşık problemleri<br /><em>zarif çözümlere</em> dönüştürüyorum.
+        I turn complex problems<br /><em>into elegant solutions.</em>
       </h2>
       <p class="about-body">
-        Merhaba! Ben Mustafa. Yazılım dünyasına olan tutkumla, kullanıcı
-        odaklı ve performans öncelikli deneyimler tasarlıyorum. Web
-        teknolojileri üzerine uzmanlaşırken her yeni projede kendimi bir
-        adım daha ileriye taşıyorum.
+        Hi, I am Mustafa. I design user-focused and performance-oriented
+        digital experiences with a strong interest in software development.
+        I keep improving my full-stack skills through every new project.
       </p>
 
       <div class="specs-grid">
         <div class="spec-item">
-          <span class="spec-key">Eğitim</span>
-          <span class="spec-val">Yazılım Mühendisliği - 3. Sınıf</span>
+          <span class="spec-key">Education</span>
+          <span class="spec-val">Software Engineering - 3rd Grade</span>
         </div>
         <div class="spec-item">
-          <span class="spec-key">Uzmanlık</span>
+          <span class="spec-key">Focus</span>
           <span class="spec-val">Full-Stack Web Development</span>
         </div>
         <div class="spec-item">
-          <span class="spec-key">Konum</span>
-          <span class="spec-val">İstanbul, Türkiye</span>
+          <span class="spec-key">Location</span>
+          <span class="spec-val">Istanbul, Turkey</span>
         </div>
         <div class="spec-item">
-          <span class="spec-key">Durum</span>
+          <span class="spec-key">Status</span>
           <span class="spec-val status-available">
             <span class="status-pulse"></span>
-            Yeni Projelere Açık
+            Open to New Projects
           </span>
         </div>
       </div>
@@ -161,12 +160,12 @@ require __DIR__ . '/includes/header.php';
 <section id="skills" class="skills-section section">
   <div class="section-label">
     <span class="label-num">02 -</span>
-    <span class="label-text">Beceriler</span>
+    <span class="label-text">Skills</span>
   </div>
 
   <div class="skills-header">
-    <h2 class="skills-heading">Teknoloji <em>Yığını</em></h2>
-    <p class="skills-sub">Ana işlem çekirdeğine entegre sistemler.</p>
+    <h2 class="skills-heading">Technology <em>Stack</em></h2>
+    <p class="skills-sub">Core systems connected to my development workflow.</p>
   </div>
 
   <div class="skills-layout">
@@ -256,11 +255,11 @@ require __DIR__ . '/includes/header.php';
 <section id="projects" class="projects-section section">
   <div class="section-label">
     <span class="label-num">03 -</span>
-    <span class="label-text">Projeler</span>
+    <span class="label-text">Projects</span>
   </div>
 
   <div class="projects-header">
-    <h2 class="projects-heading">Tamamlanan <em>Görevler</em></h2>
+    <h2 class="projects-heading">Completed <em>Work</em></h2>
   </div>
 
   <div class="projects-grid" id="projectsGrid">
@@ -296,8 +295,8 @@ require __DIR__ . '/includes/header.php';
             <span class="project-tag">System</span>
             <span class="project-tech js-dot">DB</span>
           </div>
-          <h3 class="project-name">Projeler yüklenemedi</h3>
-          <p class="project-desc">Veritabanı bağlantısı kurulduğunda projects tablosundaki kayıtlar burada listelenecek.
+          <h3 class="project-name">Projects could not be loaded</h3>
+          <p class="project-desc">When the database connection is available, records from the projects table will be listed here.
           </p>
           <div class="project-bottom">
             <span class="project-arrow">→</span>
@@ -312,12 +311,12 @@ require __DIR__ . '/includes/header.php';
 <section id="contact" class="contact-section section">
   <div class="section-label">
     <span class="label-num">04 -</span>
-    <span class="label-text">İletişim</span>
+    <span class="label-text">Contact</span>
   </div>
 
   <div class="contact-inner">
     <h2 class="contact-heading">
-      Birlikte bir şeyler<br /><em>inşa edelim.</em>
+      Let's build something<br /><em>together.</em>
     </h2>
 
     <div class="contact-body">
@@ -339,12 +338,12 @@ require __DIR__ . '/includes/header.php';
         </a>
 
         <form class="contact-form" id="contactForm" method="post">
-          <input class="form-input" type="text" name="name" placeholder="Ad Soyad" required />
-          <input class="form-input" type="email" name="email" placeholder="E-posta" required />
-          <input class="form-input" type="text" name="subject" placeholder="Konu" required />
-          <textarea class="form-input form-textarea" name="message" placeholder="Mesaj" required></textarea>
+          <input class="form-input" type="text" name="name" placeholder="Full Name" required />
+          <input class="form-input" type="email" name="email" placeholder="Email" required />
+          <input class="form-input" type="text" name="subject" placeholder="Subject" required />
+          <textarea class="form-input form-textarea" name="message" placeholder="Message" required></textarea>
           <button class="form-submit" type="submit">
-            <span>Gönder</span>
+            <span>Send</span>
             <span class="btn-arrow">↗</span>
           </button>
           <p class="form-status" id="contactStatus" aria-live="polite"></p>
@@ -353,22 +352,55 @@ require __DIR__ . '/includes/header.php';
 
       <div class="contact-details">
         <div class="detail-row">
-          <span class="detail-key">E-posta</span>
+          <span class="detail-key">Email</span>
           <a href="mailto:mustafancee.52@gmail.com" class="detail-val">mustafancee.52@gmail.com</a>
         </div>
         <div class="detail-row">
-          <span class="detail-key">Telefon</span>
+          <span class="detail-key">Phone</span>
           <span class="detail-val">+90 541 568 11 98</span>
         </div>
         <div class="detail-row">
-          <span class="detail-key">Konum</span>
-          <span class="detail-val">İstanbul, Türkiye</span>
+          <span class="detail-key">Location</span>
+          <span class="detail-val">Istanbul, Turkey</span>
         </div>
         <div class="system-status">
           <span class="status-indicator"></span>
           <span class="status-text">System Ready - Deployment Available</span>
         </div>
       </div>
+
+      <aside class="contact-aside" aria-label="Work information">
+        <div class="availability-panel">
+          <span class="panel-kicker">Available For</span>
+          <h3>Internship & junior developer roles</h3>
+          <p>I can contribute to full-stack web, Android, backend logic, and database-focused projects.</p>
+        </div>
+
+        <div class="contact-metrics">
+          <div class="metric-item">
+            <span class="metric-num">24h</span>
+            <span class="metric-label">Average reply</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-num">8</span>
+            <span class="metric-label">GitHub projects</span>
+          </div>
+          <div class="metric-item">
+            <span class="metric-num">TR/EN</span>
+            <span class="metric-label">Communication</span>
+          </div>
+        </div>
+
+        <div class="workflow-list">
+          <span class="panel-kicker">Focus Areas</span>
+          <ul>
+            <li>PHP, MySQL, JavaScript</li>
+            <li>ASP.NET Core MVC</li>
+            <li>React & API integrations</li>
+            <li>Java Android applications</li>
+          </ul>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
