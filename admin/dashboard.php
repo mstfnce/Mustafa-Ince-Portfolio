@@ -48,6 +48,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         redirectWith('error', 'Project to delete could not be found.');
     }
 
+    if ($action === 'delete_message') {
+        $id = (int) ($_POST['id'] ?? 0);
+
+        if ($id > 0) {
+            $stmt = $pdo->prepare('DELETE FROM messages WHERE id = ?');
+            $stmt->execute([$id]);
+            redirectWith('success', 'Message deleted.');
+        }
+
+        redirectWith('error', 'Message to delete could not be found.');
+    }
+
     if ($action === 'save') {
         $id = (int) ($_POST['id'] ?? 0);
         $title = trim($_POST['title'] ?? '');
@@ -300,6 +312,7 @@ $formProject = $editingProject ?? [
                 <th>Subject</th>
                 <th>Message</th>
                 <th>Date</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -311,11 +324,19 @@ $formProject = $editingProject ?? [
                     <td><?= e($message['subject']) ?></td>
                     <td><?= e($message['message']) ?></td>
                     <td><?= e($message['created_at']) ?></td>
+                    <td>
+                      <form method="post" onsubmit="return confirm('Are you sure you want to delete this message?');">
+                        <input type="hidden" name="csrf_token" value="<?= e($_SESSION['csrf_token']) ?>" />
+                        <input type="hidden" name="action" value="delete_message" />
+                        <input type="hidden" name="id" value="<?= (int) $message['id'] ?>" />
+                        <button class="admin-danger" type="submit">Delete</button>
+                      </form>
+                    </td>
                   </tr>
                 <?php endforeach; ?>
               <?php else: ?>
                 <tr>
-                  <td colspan="5">No messages yet.</td>
+                  <td colspan="6">No messages yet.</td>
                 </tr>
               <?php endif; ?>
             </tbody>
