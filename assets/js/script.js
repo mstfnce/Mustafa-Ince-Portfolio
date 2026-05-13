@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "HTML/CSS",
     "OOP",
     "Algorithms",
-    ".Net",
+    ".NET",
   ];
 
   const devProfile = {
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     role: currentTitle,
     mission: "Building modern digital experiences",
     skillsCount: techSkills.length,
-    projectCount: 6,
+    projectCount: 8,
     isSystemReady: true,
   };
 

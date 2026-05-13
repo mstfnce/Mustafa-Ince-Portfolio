@@ -14,8 +14,6 @@ require __DIR__ . '/includes/header.php';
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg-text" aria-hidden="true">DEV</div>
-
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="eyebrow-line"></span>
@@ -175,7 +173,7 @@ require __DIR__ . '/includes/header.php';
     <div class="network-wrap">
       <div class="network-container">
         <div class="core-node">
-          <span class="core-label">JS</span>
+          <span class="core-label">FS</span>
           <div class="core-ring"></div>
         </div>
         <div class="skill-node node-1" data-skill="Python">PY</div>
@@ -186,6 +184,7 @@ require __DIR__ . '/includes/header.php';
         <div class="skill-node node-6" data-skill="HTML / CSS">WEB</div>
         <div class="skill-node node-7" data-skill="Algorithms & DSA">DSA</div>
         <div class="skill-node node-8" data-skill="OOP Principles">OOP</div>
+        <div class="skill-node node-9" data-skill="ASP.NET Core">.NET</div>
       </div>
       <div class="skill-tooltip" id="skillTooltip"></div>
     </div>
@@ -216,6 +215,12 @@ require __DIR__ . '/includes/header.php';
             <div class="bar-header"><span>SQL</span><span>75%</span></div>
             <div class="bar-track">
               <div class="bar-fill" data-width="75"></div>
+            </div>
+          </div>
+          <div class="skill-bar-item">
+            <div class="bar-header"><span>ASP.NET Core</span><span>72%</span></div>
+            <div class="bar-track">
+              <div class="bar-fill" data-width="72"></div>
             </div>
           </div>
         </div>

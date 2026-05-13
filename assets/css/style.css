@@ -168,21 +168,6 @@ body {
   overflow: hidden;
 }
 
-.hero-bg-text {
-  position: absolute;
-  right: -2%;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--font-serif);
-  font-size: clamp(12rem, 22vw, 22rem);
-  font-weight: 900;
-  line-height: 1;
-  color: rgba(200, 169, 110, 0.025);
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.05em;
-}
-
 .hero-content {
   z-index: 2;
 }
@@ -781,48 +766,60 @@ body {
   transition:
     border-color 0.3s,
     color 0.3s,
-    box-shadow 0.3s;
-  animation: orbitSkill 36s linear infinite;
+    box-shadow 0.3s,
+    transform 0.3s var(--ease);
 }
 .skill-node:hover {
   border-color: var(--gold);
   color: var(--gold);
   box-shadow: 0 0 20px rgba(200, 169, 110, 0.25);
-  animation-play-state: paused;
+  transform: translate(-50%, -50%) scale(1.08);
 }
 
 .node-1 {
-  animation-delay: 0s;
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, -50%);
 }
 .node-2 {
-  animation-delay: -4.5s;
+  left: 82%;
+  top: 12%;
+  transform: translate(-50%, -50%);
 }
 .node-3 {
-  animation-delay: -9s;
+  left: 100%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .node-4 {
-  animation-delay: -13.5s;
+  left: 82%;
+  top: 88%;
+  transform: translate(-50%, -50%);
 }
 .node-5 {
-  animation-delay: -18s;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%);
 }
 .node-6 {
-  animation-delay: -22.5s;
+  left: 18%;
+  top: 88%;
+  transform: translate(-50%, -50%);
 }
 .node-7 {
-  animation-delay: -27s;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 .node-8 {
-  animation-delay: -31.5s;
+  left: 18%;
+  top: 12%;
+  transform: translate(-50%, -50%);
 }
-
-@keyframes orbitSkill {
-  from {
-    transform: rotate(0deg) translate(155px) rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg) translate(155px) rotate(-360deg);
-  }
+.node-9 {
+  left: 50%;
+  top: 50%;
+  transform: translate(76px, -50%);
 }
 
 .skill-tooltip {
@@ -1007,6 +1004,10 @@ body {
 }
 .js-dot::before {
   background: #f1e05a;
+}
+.php-dot::before {
+  background: #4f5d95;
+  box-shadow: 0 0 6px #4f5d95;
 }
 
 .project-name {
@@ -1569,8 +1570,5 @@ a.detail-val:hover {
   }
   .spec-item:last-child {
     border-bottom: none;
-  }
-  .hero-bg-text {
-    font-size: 8rem;
   }
 }
